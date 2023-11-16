@@ -1,0 +1,39 @@
+body {
+    background-color: #defffe;
+  }
+  
+  /* .class {
+    height: 100px;
+  } */
+
+
+    .sidebar {
+    height: 100%;
+    width: 5%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #62b6cb;
+    overflow-x: hidden;
+  }
+    .sidebar img {
+    width: 100%; 
+    height: auto; 
+    display: block;
+}
+
+.main-content {
+    margin-left: 70px;
+}
+
+@media screen and (max-width: 600px) {
+    .main-content {
+        margin-left: 50px; 
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .main-content {
+        margin-left: 20px;
+    }
+}
