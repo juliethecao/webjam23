@@ -7,7 +7,7 @@ body {
   } */
 
 
-.sidebar {
+    .sidebar {
     height: 100%;
     width: 5%;
     position: fixed;
@@ -16,14 +16,17 @@ body {
     background-color: #62b6cb;
     overflow-x: hidden;
     justify-content: space-between;
-}
-.sidebar img {
+  }
+    .sidebar img {
     flex-grow: 1;
     background-color: #eae9e9;
     border-radius: 60%; /* circle */
     width: 100%; 
     height: auto; 
     display: inline-block;
+}
+    .sidebar img:hover{
+        background-color: #62b6cb;
 }
 
 .Name:hover + .name-hide {
@@ -89,13 +92,77 @@ body {
     display: none;
 }
 
-
 .logo-header {
     margin-left: 70px;
 }
 
 .main-content {
     margin-left: 70px;
+}
+
+.professor {
+    float: left;
+    background-color: #bee9e8;
+    margin-left: 70px;
+    width: auto;
+    height: 100%;
+}
+
+.professor-child {
+    width: 50%;
+    float: left;
+    padding: 20px;
+    border: 2px solid red;
+}  
+
+.professor-info {
+    background-color: #bee9e8;
+    margin-left: 70px;
+    width: auto;
+    height: 100%;
+}
+
+.professor-rating {
+    background-color: #bee9e8;
+    margin-left: 70px;
+    width: auto;
+    height: 100%;
+}
+
+.review-area {
+    display: flex;
+    align-items: center;
+}
+
+.rating, .reviews {
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+    color: #333;
+}
+
+.rating i, .reviews i {
+    margin-right: 5px;
+}
+
+.bookmark i {
+    color: #333;
+}
+
+.review-content {
+    background-color: #bee9e8;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.review-content h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.review-content p {
+    font-size: 16px;
+    line-height: 1.6;
 }
 
 @media screen and (max-width: 600px) {
@@ -109,3 +176,4 @@ body {
         margin-left: 20px;
     }
 }
+

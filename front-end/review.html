@@ -2,8 +2,10 @@
 <html lang="en-US">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zoratr</title>
-    <link rel="stylesheet" type="text/css" href="dashboard.css">
+    <link rel="stylesheet" type="text/css" href="review.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
   </head>
   <style>
     hr {
@@ -52,14 +54,39 @@
 
     </div>
 
-    <!-- Page Content -->
-    <div class="logo-header">
-        <img src="logo-big.png" alt="logo-big" border="0" />
+    <div class="professor">
+        <!-- Professor Info -->
+        <div class="professor-child" id="professorInfo">
+            <h1>Professor Name:</h1>
+            <h1>Department:</h1>
+            <h1>Title:</h1>
+        </div>
+
+        <!-- Professor's Rating -->
+        <div class="professor-child" id="professorRating">
+            <h1>Rating: </h1>
+            <h1># of Reviews: </h1>
+        </div>
     </div>
-    <div class="main-content">
-        <h1>Get started with a professor, course, or building at UCI! <br> 
-            Elevate your campus experience, one review at a time!</h1>
+    
+    <div class="review-area">
+        <div class="rating">
+            <i class="fas fa-heart"></i>
+            <span>Rating</span>
+        </div>
+        <div class="reviews">
+            <i class="fas fa-comment"></i>
+            <span># of Reviews</span>
+        </div>
+        <div class="bookmark">
+            <i class="fas fa-bookmark"></i>
+        </div>
     </div>
 
-  </body>
-</html>
+    <div class="review-content">
+        <h2>Title of Review</h2>
+        <p>Name</p>
+        <p>MM/DD/YYYY</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+    </div>
+    
