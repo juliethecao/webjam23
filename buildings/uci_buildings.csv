@@ -1,0 +1,155 @@
+﻿Building_name,Building_type,School_type,Latlon
+Art Culture & Technology (ACT),Academic Units & Schools,Arts,"33.65071192475636, -117.84493567558403"
+Art Studio (ART),Academic Units & Schools,Arts,"33.6501703060485, -117.84486123616755"
+Arts Annex (ARAN),Academic Units & Schools,Arts,"33.64809598728669, -117.84701908374461"
+Arts Instruction & Technology Resource Center (AITR),Academic Units & Schools,Arts,"33.650121437180026, -117.84392364493259"
+Choral Studio,Academic Units & Schools,Arts,"33.64975585150463, -117.84404401794662"
+Claire Trevor Theatre (CTT),Academic Units & Schools,Arts,"33.6496034142118, -117.84524667191855"
+Contemporary Arts Center (CAC),Academic Units & Schools,Arts,"33.650203525979734, -117.84522414308286"
+Drama Building (DRA),Academic Units & Schools,Arts,"33.65073748688517, -117.84476937561789"
+Humanities Interim Classroom Facility (HICF) | Studio Art Trailer,Academic Units & Schools,"Arts, Humanities","33.647156715303026, -117.84688990445373"
+Irvine Barclay Theatre,Academic Units & Schools,Arts,"33.64941588356124, -117.84087467561793"
+Little Theatre,Academic Units & Schools,Arts,"33.647232985431806, -117.84396541376667"
+Mesa Arts Building (MAB),Academic Units & Schools,Arts,"33.65037889452727, -117.84630567376824"
+Music & Media Building (MM),Academic Units & Schools,Arts,"33.64943085883313, -117.8444717314397"
+Production Studio,Academic Units & Schools,Arts,"33.6499117888561, -117.84572537376836"
+Robert Cohen Theatre & Dance Studios (DS),Academic Units & Schools,Arts,"33.64933459744514, -117.8455585848598"
+Sculpture & Ceramic Studios (SCS) | Nixon Theatre,Academic Units & Schools,Arts,"33.6502716293864, -117.84449288527912"
+Studio Four (STU4),Academic Units & Schools,Arts,"33.65019215764614, -117.84568957708015"
+University Art Gallery (UAG) | Beall Center for Art + Technology,Academic Units & Schools,Arts,"33.64999994662046, -117.84422868060402"
+William J. Gillespie Performance Studios (PSTU),Academic Units & Schools,Arts,"33.650782093690246, -117.84515968726116"
+Winifred Smith Hall (WSH),Academic Units & Schools,Arts,"33.649772351461834, -117.84438495842566"
+Yurt Dance Studio,Academic Units & Schools,Arts,"33.64225563479752, -117.82798387376832"
+Anteater Learning Pavilion (ALP),Academic Units & Schools,Biological Sciences,"33.64734195776701, -117.8443670872613"
+Biological Sciences III (BS3),Academic Units & Schools,Biological Sciences,"33.645385678546084, -117.84580013143965"
+Bison Modular (BIMO),Academic Units & Schools,"Biological Sciences, Pharmaceutical Sciences","33.64397966648913, -117.84639878726134"
+Bonney Research Laboratory (BRL),"Academic Units & Schools, Research Facilities",Biological Sciences,"33.64621481240418, -117.84616590912556"
+Center for the Neurobiology of Learning & Memory Annex (CNLM),"Academic Units & Schools, Research Facilities",Biological Sciences,"33.64675407060527, -117.846413702604"
+Greenhouse,"Academic Units & Schools, Research Facilities",Biological Sciences,"33.64737685893531, -117.8454015759827"
+Howard Schneiderman Lecture Hall (HSLH),Academic Units & Schools,Biological Sciences,"33.645773924941174, -117.8447063449327"
+McGaugh Hall (MH),Academic Units & Schools,Biological Sciences,"33.645347141788584, -117.84476283143974"
+Qureshey Research Laboratory (QRL),"Academic Units & Schools, Research Facilities",Biological Sciences,"33.64660815633746, -117.84568644493268"
+Steinhaus Hall (SH),Academic Units & Schools,"Biological Sciences, Pharmaceutical Sciences","33.64628586190402, -117.8449312171413"
+Merage School of Business (SB1),Academic Units & Schools,Business,"33.646913041906075, -117.83781873143961"
+Merage School of Business II (SB2),Academic Units & Schools,Business,"33.64668317331686, -117.83806877376834"
+Multipurpose Academic & Administrative Building (MPAA),"Academic Units & Schools, Administrative","Business, Law",
+Education Building (EDUC),Academic Units & Schools,Education,
+Engineering & Computing Trailer (ECT),Academic Units & Schools,Engineering,
+Engineering Gateway (EG),"Academic Units & Schools, Administrative",Engineering,
+Engineering Hall (EH),"Academic Units & Schools, Administrative",Engineering,
+Engineering Laboratory Facility (ELF),"Academic Units & Schools, Research Facilities",Engineering,
+Engineering Lecture Hall (ELH),Academic Units & Schools,Engineering,
+Engineering Tower (ET),Academic Units & Schools,Engineering,
+Interdisciplinary Science and Engineering Building (ISEB),"Academic Units & Schools, Research Facilities","Engineering, Information & Computer Sciences, Physical Sciences",
+Interim Classroom Facility (ICF),Academic Units & Schools,"Engineering, Information & Computer Sciences",
+McDonnell Douglas Engineering Auditorium (MDE),Academic Units & Schools,Engineering,
+Rockwell Engineering Center (REC),Academic Units & Schools,Engineering,
+Humanities Gateway (HG),"Academic Units & Schools, Research Facilities",Humanities,
+Humanities Hall (HH),Academic Units & Schools,Humanities,
+Humanities Instructional Building (HIB),Academic Units & Schools,Humanities,
+Krieger Hall (KH),Academic Units & Schools,Humanities,
+Donald Bren Hall (DBH),"Academic Units & Schools, Administrative",Information & Computer Sciences,
+Information & Computer Science (ICS),Academic Units & Schools,Information & Computer Sciences,
+Information & Computer Science 2 (ICS2),Academic Units & Schools,Information & Computer Sciences,
+Law Building (LAW),Academic Units & Schools,Law,
+Beckman Laser Institute (BLI),"Academic Units & Schools, Research Facilities",Medicine,
+Gavin Herbert Eye Institute,"Academic Units & Schools, Research Facilities",Medicine,
+Gillespie Neuroscience Research Facility (GNRF),"Academic Units & Schools, Research Facilities",Medicine,
+Gottschalk Medical Plaza,Academic Units & Schools,Medicine,
+Hewitt Research Hall (HRH),"Academic Units & Schools, Research Facilities",Medicine,
+Irvine Hall (IH),Academic Units & Schools,Medicine,
+MRI 3T Trailer,Academic Units & Schools,Medicine,
+MRI 4T Trailer,Academic Units & Schools,Medicine,
+Medical Education Building,Academic Units & Schools,Medicine,
+Medical Sciences A (MS-A),Academic Units & Schools,Medicine,
+Medical Sciences A Administration,Academic Units & Schools,Medicine,
+Medical Sciences A Annex,Academic Units & Schools,Medicine,
+Medical Sciences B (MS-B),Academic Units & Schools,Medicine,
+Medical Sciences C (MS-C),Academic Units & Schools,Medicine,
+Medical Sciences Classroom Facility,Academic Units & Schools,Medicine,
+Medical Sciences D (MS-D) | Cheney Hall,Academic Units & Schools,Medicine,
+Medical Sciences E (MS-E),Academic Units & Schools,Medicine,
+Medical Surge I (MS1),"Academic Units & Schools, Administrative",Medicine,
+Medical Surge II (MS2),Academic Units & Schools,Medicine,
+Sprague Hall (SPH),"Academic Units & Schools, Research Facilities",Medicine,
+Sue & Bill Gross Nursing & Health Sciences Hall,"Academic Units & Schools, Research Facilities","Medicine, Nursing Science",
+Susan & Henry Samueli College of Health Sciences Building,"Academic Units & Schools, Research Facilities","Medicine, Nursing Science",
+Tamkin Student Lecture Building,Academic Units & Schools,Medicine,
+Berk Hall (BH),Academic Units & Schools,Nursing Science,
+Croul Hall (CRH),Academic Units & Schools,Physical Sciences,
+Frederick Reines Hall (FRH),Academic Units & Schools,Physical Sciences,
+Multipurpose Science & Technology Building (MSTB),"Academic Units & Schools, Administrative",Physical Sciences,
+Natural Sciences I (NS1),Academic Units & Schools,Physical Sciences,
+Natural Sciences II (NS2),Academic Units & Schools,Physical Sciences,
+Parkview Classroom Building (PCB),Academic Units & Schools,Physical Sciences,
+Physical Sciences Classroom Building (PSCB),Academic Units & Schools,Physical Sciences,
+Physical Sciences High Bay,"Academic Units & Schools, Research Facilities",Physical Sciences,
+Physical Sciences Lecture Hall (PSLH),Academic Units & Schools,Physical Sciences,
+Rowland Hall (RH),Academic Units & Schools,Physical Sciences,
+Anteater Instruction & Research Building (AIRB),"Academic Units & Schools, Research Facilities",Public Health,
+Social & Behavioral Sciences Gateway (SBSG),Academic Units & Schools,"Social Ecology, Social Sciences",
+Social Ecology I (SE),"Academic Units & Schools, Administrative",Social Ecology,
+Social Ecology II (SE2),Academic Units & Schools,Social Ecology,
+Social Science Hall (SSH),Academic Units & Schools,Social Sciences,
+Social Science Laboratory (SSL),Academic Units & Schools,Social Sciences,
+Social Science Lecture Hall (SSLH),Academic Units & Schools,Social Sciences,
+Social Science Plaza A (SSPA),Academic Units & Schools,Social Sciences,
+Social Science Plaza B (SSPB),Academic Units & Schools,Social Sciences,
+Social Science Tower (SST),"Academic Units & Schools, Administrative",Social Sciences,
+Social Science Trailer (SSTR),Academic Units & Schools,Social Sciences,
+Summer Session A,Academic Units & Schools,Summer Session,
+Summer Session B,Academic Units & Schools,Summer Session,
+100 Theory,"Administrative, Research Facilities",,
+101 Academy,Administrative,,
+110 Theory,Administrative,,
+111 Theory,Administrative,,
+120 Theory,Administrative,,
+131 Innovation,Administrative,,
+141 Innovation,Administrative,,
+5141 California,Administrative,,
+5171 California,Administrative,,
+5251 California,Administrative,,
+5270 California,Administrative,,
+Administrative Modular,Administrative,,
+Aldrich Hall (ALH),Administrative,,
+American Heart Association,Administrative,,
+Environmental Health & Safety Services Facility,Administrative,,
+Facilities Management Building,"Administrative, Campus Facilities",,
+Faculty and Staff Housing Office,Administrative,,
+Mesa Office Building (MOB),Administrative,,
+Multipurpose Academic & Admin. Bldg.,Administrative,,
+Newkirk Alumni Center,Administrative,,
+Public Services (PSB),Administrative,,
+Student Center (SC),Administrative,,
+Student Center South,Administrative,,
+University Tower (UT),Administrative,,
+Air Pollution Health Effects Laboratory (APHEL),"Campus Facilities, Research Facilities",,
+Building Services Building,Campus Facilities,,
+Central Plant (CP),Campus Facilities,,
+Distribution Facility,Campus Facilities,,
+Electrical Substation,Campus Facilities,,
+Facilities Management Shops,Campus Facilities,,
+Faculty Research Facility,Campus Facilities,,
+Fleet Services Office,Campus Facilities,,
+Grounds Maintenance Facility,Campus Facilities,,
+Receiving,Campus Facilities,,
+Recycling Center,Campus Facilities,,
+Thermal Energy Storage Tank,Campus Facilities,,
+Anteater Recreation Center (ARC),Campus Recreation,,
+Court Building,Campus Recreation,,
+Field Building,Campus Recreation,,
+Continuing Education 1 (DCE),Continuing Education,,
+Continuing Education 3,Continuing Education,,
+Continuing Education 4,Continuing Education,,
+Continuing Education 5,Continuing Education,,
+Continuing Education 6,Continuing Education,,
+Gateway Study Center (GC),Libraries,,
+Langson Library (LLIB),Libraries,,
+Law Library,Libraries,,
+Science Library (SLIB),Libraries,,"33.64571114877641, -117.84656609348366"
+Arboretum (ARBO),Research Facilities,,
+Beckman Center of the National Academies of Sciences & Engineering,Research Facilities,,
+California Institute for Telecommunications and Information Technology (Calit2),Research Facilities,,
+Faculty Research Facility (FRF),Research Facilities,,
+Plumwood House (PH),Research Facilities,,
+Sue & Bill Gross Hall: A CIRM Institute,Research Facilities,,
