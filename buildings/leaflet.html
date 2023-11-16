@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>zotratr.</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/papaparse/papaparse.min.js"></script>
+
     <style>
         #map {
             height: 800px;
@@ -21,29 +23,52 @@
     </div>     
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script>
-        function createMap(buildings) {
+        // fetch('uci_buildings.csv')
+        //     .then(response => {
+        //         if (!response.ok) {
+        //             throw new Error('Network response was not ok');
+        //         }
+        //         return response.text();
+        //     })
+        //     .then(data => {
+        //         var buildings = Papa.parse(data, { header: true }).data;
+        //         createMap(buildings);
+        //     })
+        //     .catch(error => console.error('Error fetching CSV:', error));
+        var buildings = {
+            "Building_name": "Art Culture & Technology (ACT)",
+            "Building_type": "Academic Units & Schools",
+            "School_type": "Arts",
+            "Latlon": "33.65071192475636, -117.84493567558403",
+            "_id": "dVLCLXm22a2RA2Qt"
+        };
 
+        createMap([buildings]);
+
+        function createMap(buildings) {
             // Set the initial map view
-            var map = L.map('map').setView([33.64237244143016, -117.84168543140119], 15); 
-            
+            var map = L.map('map').setView([33.64237244143016, -117.84168543140119], 17);
+
             // Credits to Leaflet API
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 attribution: '© OpenStreetMap contributors'
             }).addTo(map);
 
-            buildings.forEach(function(building) {
-                var marker = L.marker([building.latitude, building.longitude]).addTo(map);
-                marker.bindPopup('<b>' + building.name + '</b><br>' + 'Location: ' + building.location);
+            plotMarkers(buildings, map);
+        }
+
+        function plotMarkers(buildings, map) {
+            buildings.forEach(function (building) {
+                if (building.Latlon && typeof building.Latlon === 'string') {
+                    var [lat, lon] = building.Latlon.split(',');
+                    lat = lat.trim();
+                    lon = lon.trim();
+                    var marker = L.marker([parseFloat(lat), parseFloat(lon)]).addTo(map);
+                    marker.bindPopup('<b>' + building.Building_name + '</b><br>' + 'Type: ' + building.Building_type + '</b><br>' + 'School: ' + building.School_type);
+                }
             });
         }
 
-        var buildings = [
-            { name: 'Building 1', latitude: 40.7128, longitude: -74.0060, location: 'New York' },
-            { name: 'Building 2', latitude: 34.0522, longitude: -118.2437, location: 'Los Angeles' },
-            // Add more buildings as needed
-        ];
-
-        createMap(buildings);
     </script>
 </body>
 </html>
