@@ -1,5 +1,6 @@
 body {
     background-color: #defffe;
+    font-family: 'Poppins', sans-serif;
   }
   
   /* .class {
@@ -18,7 +19,6 @@ body {
     justify-content: space-between;
 }
 .sidebar img {
-    flex-grow: 1;
     background-color: #eae9e9;
     border-radius: 60%; /* circle */
     width: 100%; 
@@ -90,12 +90,14 @@ body {
 }
 
 
-.logo-header {
+/* .logo-header {
     margin-left: 70px;
-}
+} */
 
 .main-content {
     margin-left: 70px;
+    text-align: center;
+    background-color: #eae9e9;
 }
 
 @media screen and (max-width: 600px) {

@@ -1,5 +1,6 @@
 body {
     background-color: #defffe;
+    font-family: 'Poppins', sans-serif;
   }
   
   /* .class {
@@ -27,6 +28,12 @@ body {
 }
     .sidebar img:hover{
         background-color: #62b6cb;
+}
+
+.spacer {
+    width: 5%;
+    height: auto;  
+    background-color: #defffe;
 }
 
 .Name:hover + .name-hide {
@@ -101,18 +108,19 @@ body {
 }
 
 .professor {
-    float: left;
+    display: flex;
     background-color: #bee9e8;
     margin-left: 70px;
     width: auto;
     height: 100%;
+    justify-content: space-around;
 }
 
 .professor-child {
     width: 50%;
     float: left;
     padding: 20px;
-    border: 2px solid red;
+
 }  
 
 .professor-info {
@@ -150,19 +158,38 @@ body {
 }
 
 .review-content {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 10px;
     background-color: #bee9e8;
     padding: 20px;
+    margin: 4%;
     border-radius: 8px;
+    overflow: scroll;
 }
 
-.review-content h2 {
-    font-size: 20px;
-    margin-bottom: 10px;
+.TitleOfReview{
+    font-size: 40px;
+    grid-column-start: 1;
+    grid-column-end: 3;
 }
 
-.review-content p {
-    font-size: 16px;
-    line-height: 1.6;
+.Rating{
+    grid-column-start: 3;
+    grid-column-end: 4;
+}
+
+.Name{
+    grid-row-start: 2;
+    justify-self: start;
+}
+
+.Date{
+    justify-self: start;
+}
+
+.Description{
+    grid-row-start: 3;
 }
 
 @media screen and (max-width: 600px) {
