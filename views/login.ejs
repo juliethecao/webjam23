@@ -1,15 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zotratr.</title>
+    <link href="login.css" rel="stylesheet" type="text/css">
 
-<H1>Login</H1>
-<% if (messages.error) {messages.error} %>
-<form action="/login" method="POST">
-    <div class="form-container">
-        <label for="email">UCI Email</label>
-        <input type="email" id="email" name="email" required>
-
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" required>
-
-        <button type="submit">Login</button>
-    </div>
-</form>
-<a href="/register">Don't have an account? Register</a>
+</head>
+<body>
+    <img src="assets/long_logo.png">
+    <div class="login-container">
+        <% if (messages.error) {messages.error} %>
+        <form action="/login" method="POST">
+            <div class="form-container">
+                <H1>Login</H1>
+                <div id="email">
+                    <label for="email">UCI Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="password">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="submit">
+                    <button type="submit">Login</button>
+                </div>
+                <a href="/register">Don't have an account? Register</a>
+            </div>
+        </form>
+    </div> 
+</body>
+</html>

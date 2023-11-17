@@ -1,0 +1,37 @@
+@font-face {
+    font-family: 'Calibri';
+    src: local('Calibri'), sans-serif;
+}
+body {
+    background-color: #defffe;
+    font-family: 'Calibri', sans-serif;
+}
+
+img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-container{
+    display: grid;
+    grid-template-columns: none;
+    align-items: center;
+    justify-content: center;
+    background-color: #bee9e8;
+    border-radius: 10px;
+    padding: 50px 50px 50px 50px;
+    gap: 2vw;
+}
+
+.login-container {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}

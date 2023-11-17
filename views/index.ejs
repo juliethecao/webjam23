@@ -1,13 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zotratr.</title>
+    <link rel="icon" href="assets/favicon.ico">
 
-<h1>Hi <%= name %></h1>
-<form action="/logout?_method=DELETE" method="POST">
-<button type="submit">Log Out</button>
-</form>
+</head>
+<body>
+    <div class="sidebar" id="sidebar">
+        <a href="#" class="Logo">
+            <img src="assets/short_logo.png" alt="Zotratr Logo">
+        </a> 
+        <!-- <hr> -->
+        <div class="rectangle"></div>
+        <a href="#" class="Name">
+            <img src="assets/profile.png" alt="Name"/>
+        </a>
+        <div class="name-hide">Name</div>
 
-<form action="/results" method="POST">
-    <label for="search">Search</label>
-    <input name="search" id="search" type="text" placeholder="Professor, Building">
-    <buttom type="submit">Submit</buttom>
-</form>
+        <a href="#" class="Search">
+            <img src="assets/search.png" alt="Search" />
+        </a> 
+        <div class="search-hide">Search</div>
+
+        <a href="#" class="Links">
+            <img src="assets/links.png" alt="Links" />
+        </a> 
+        <div class="links-hide">Links</div>
+
+        <a href="#" class="Feedback">
+            <img src="assets/feedback.png" alt="Feedback" />
+        </a>
+        <div class="feedback-hide">Feedback</div>
+
+        <a href="#" class="Settings">
+            <img src="assets/settings.png" alt="Settings" />
+        </a>
+        <div class="settings-hide">Settings</div>
+
+        <!-- <a href="#" class="Logout">
+            <img src="assets/logout.png" alt="Logout"/>
+        </a>  -->
+        <div class="logout-hide">Logout</div>
+        <form action="/logout?_method=DELETE" method="POST">
+            <button type="submit"><img src="assets/logout.png" alt="Logout"/></button>
+        </form>
+
+    </div>
+    <h1>Welcome <%= name %>!</h1>
+    
+
+    <form action="/results" method="POST">
+        <label for="search">Search</label>
+        <input name="search" id="search" type="text" placeholder="Professor, Building">
+        <button type="submit">Submit</button>
+    </form>
+
+    
+<style>
+
+    body {
+    background-color: #defffe;
+    margin:0px;
+    display:flex;
+  }
+  
+  /* .class {
+    height: 100px;
+  } */
+
+.rectangle {
+    background-color:  #bee9e8;
+    height: 5px;
+    width: 80px;
+    border-radius: 10px;
+    margin: 0 auto;
+}
+
+.sidebar {
+    height: 100vh;
+    width: 200px;
+    /* position: fixed; */
+    /* top: 0;
+    left: 0; */
+    background-color: #62b6cb;
+    display: flex;
+    flex-direction: column;
+    padding:5px;
+    /* align-items: center;  */
+    /* justify-content: center;  */
+}
+.sidebar img {
+    background-color: #eae9e9;
+    border-radius: 50%;
+    border-color: #1f1f1f;
+    border-width: 5px;
+    border-style: solid;
+    width: 70%; 
+    height: auto; 
+    display: flex;
+    margin: 5px;
+    padding: 10px;
+
+}
+
+.Name:hover + .name-hide {
+    display: block;
+    color: #eae9e9;
+}
+
+.name-hide{
+    display: none;
+}
+
+.Search:hover + .search-hide {
+    display: block;
+    color: #eae9e9;
+}
+
+.search-hide{
+    display: none;
+}
+
+.Links:hover + .links-hide {
+    display: block;
+    color: #eae9e9;
+}
+
+.links-hide{
+    display: none;
+}
+
+.Feedback:hover + .feedback-hide {
+    display: block;
+    color: #eae9e9;
+}
+
+.feedback-hide{
+    display: none;
+}
+
+.Settings:hover + .settings-hide {
+    display: block;
+    color: #eae9e9;
+}
+
+.settings-hide{
+    display: none;
+}
+
+.Links:hover + .links-hide {
+    display: block;
+    color: #eae9e9;
+}
+
+.links-hide{
+    display: none;
+}
+
+.Logout:hover + .logout-hide {
+    display: block;
+    color: #eae9e9;
+}
+
+.logout-hide{
+    display: none;
+}
+
+
+.logo-header {
+    margin-left: 70px;
+}
+
+.main-content {
+    margin-left: 70px;
+    color: #1f1f1f;
+}
+</style>
+</body>
+</html>
 
 

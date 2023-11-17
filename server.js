@@ -10,6 +10,7 @@ const flash = require('express-flash');
 const session = require('express-session');
 const util = require('util');
 const methodOverride = require('method-override');
+app.use(express.static("views"));
 
 // database
 const database = new Datastore('database.db');
