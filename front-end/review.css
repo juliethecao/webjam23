@@ -7,7 +7,7 @@ body {
   } */
 
 
-    .sidebar {
+.sidebar {
     height: 100%;
     width: 5%;
     position: fixed;
@@ -17,7 +17,7 @@ body {
     overflow-x: hidden;
     justify-content: space-between;
   }
-    .sidebar img {
+.sidebar img {
     flex-grow: 1;
     background-color: #eae9e9;
     border-radius: 60%; /* circle */
