@@ -12,12 +12,9 @@
 <script>
 
 function handleClick(name) {
-    // current_item = name;
-    // console.log(name);
     fetch('/reviews?name=' + encodeURIComponent(name))
         .then(response => response.text())
         .then(html => {
-            // Insert the HTML into the DOM
             document.body.innerHTML = html;
         })
         .catch(error => console.error('Error:', error));
