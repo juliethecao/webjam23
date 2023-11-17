@@ -1,0 +1,46 @@
+
+<h1>Results</h1>
+<form action="/logout?_method=DELETE" method="POST">
+    <button type="submit">Log Out</button>
+</form>
+<form action="/" method="GET">
+    <button type="submit">Home</button>
+</form>
+
+<h2>Here they are <%- results %></h2>
+
+<script>
+
+function handleClick(name) {
+    // current_item = name;
+    // console.log(name);
+    fetch('/reviews?name=' + encodeURIComponent(name))
+        .then(response => response.text())
+        .then(html => {
+            // Insert the HTML into the DOM
+            document.body.innerHTML = html;
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+function toggleForm() {
+        console.log('skadoosh');
+        const form = document.getElementById('review');
+        if (form.style.display === 'none') {
+            form.style.display = 'block';
+        } else {
+            form.style.display = 'none';
+        }
+}
+</script>   
+    
+    <style>
+        .result-box{
+            border-width: 3px;
+            border-color: black;
+            background-color: pink;
+        }
+    </style> 
+
+
+

@@ -1,0 +1,47 @@
+<h1>Reviews for <%= name %></h1> 
+<form action="/logout?_method=DELETE" method="POST">
+    <button type="submit">Log Out</button>
+</form>
+<form action="/" method="GET">
+    <button type="submit">Home</button>
+</form>
+
+<button type="submit" onclick="toggleForm()">Create Review</button>
+
+<!-- have a js function that reads the created onclick function from each review to 
+like/dislike -->
+<div> <%- reviews %> </div>
+
+<!-- pop up review creation -->
+
+<div class="review" id="review">
+    <button type="submit" onclick="toggleForm()">X</button>
+    <h2>Create Review for <%= name %></h2>
+    <form action="/createRev" method="POST">
+        <input type="hidden" name="name" value="<%= name %>">
+        <label for="title">Title</label>
+        <input type="text" name="title" required>
+
+        <label for="title">Description</label>
+        <textarea name="desc" required></textarea>
+
+        <label for="rating">Rating:</label> 
+        <input type="radio" name = "rating" value="1"> 1 </br>
+        <input type="radio" name = "rating" value="2"> 2 </br>
+        <input type="radio" name = "rating" value="3"> 3 </br>
+        <input type="radio" name = "rating" value="4"> 4 </br>
+        <input type="radio" name = "rating" value="5"> 5 </br>
+
+        <button type="submit" onclick="toggleForm()">Create Review</button>
+    </form>
+</div>
+
+
+
+<!-- <style>
+    #review {
+        display: none;
+        visibility: hidden;
+        background-color: lightblue;
+    }
+</style> -->
