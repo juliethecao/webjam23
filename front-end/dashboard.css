@@ -15,7 +15,7 @@ body {
     top: 0;
     left: 0;
     background-color: #62b6cb;
-    overflow-x: hidden;
+    overflow-x: visible;
     justify-content: space-between;
 }
 .sidebar img {
@@ -26,69 +26,175 @@ body {
     display: inline-block;
 }
 
-.Name:hover + .name-hide {
-    display: block;
+.Name{
+    position: relative;
+    display: inline-block;
+}
+
+.NameToolTip{
+    visibility: hidden;
+    background-color: #62b6cb;
     color: #eae9e9;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 100%;
+    margin-left: 10px; 
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
 }
 
-.name-hide{
-    display: none;
+.Name:hover .NameToolTip {
+    visibility: visible;
+    opacity: 1;
 }
 
-.Search:hover + .search-hide {
-    display: block;
+.Search {
+    position: relative;
+    display: inline-block
+}
+
+.SearchToolTip{
+    visibility: visible;
+    background-color: #62b6cb;
     color: #eae9e9;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 100%;
+    margin-left: 10px; 
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
 }
 
-.search-hide{
-    display: none;
+.Search:hover .SearchToolTip {
+    visibility: visible;
+    opacity: 1;
 }
 
-.Links:hover + .links-hide {
-    display: block;
+.Links {
+    position: relative;
+    display: inline-block
+}
+
+.LinksToolTip{
+    visibility: visible;
+    background-color: #62b6cb;
     color: #eae9e9;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 100%;
+    margin-left: 10px; 
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
 }
 
-.links-hide{
-    display: none;
+.Links:hover .LinksToolTip {
+    visibility: visible;
+    opacity: 1;
 }
 
-.Feedback:hover + .feedback-hide {
-    display: block;
+
+.Feedback{
+    position: relative;
+    display: inline-block
+}
+
+.FeedbackToolTip{
+    visibility: visible;
+    background-color: #62b6cb;
     color: #eae9e9;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 100%;
+    margin-left: 10px; 
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
 }
 
-.feedback-hide{
-    display: none;
+.Feedback:hover .FeedbackToolTip {
+    visibility: visible;
+    opacity: 1;
 }
 
-.Settings:hover + .settings-hide {
-    display: block;
+
+.Settings{
+    position: relative;
+    display: inline-block
+}
+
+.SettingsToolTip{
+    visibility: visible;
+    background-color: #62b6cb;
     color: #eae9e9;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 100%;
+    margin-left: 10px; 
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
 }
 
-.settings-hide{
-    display: none;
+.Settings:hover .SettingsToolTip {
+    visibility: visible;
+    opacity: 1;
 }
 
-.Links:hover + .links-hide {
-    display: block;
+.Logout{
+    position: relative;
+    display: inline-block
+}
+
+.LogoutToolTip{
+    visibility: visible;
+    background-color: #62b6cb;
     color: #eae9e9;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 100%;
+    margin-left: 10px; 
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
 }
 
-.links-hide{
-    display: none;
+.Logout:hover .LogoutToolTip {
+    visibility: visible;
+    opacity: 1;
 }
-
-.Logout:hover + .logout-hide {
-    display: block;
-    color: #eae9e9;
-}
-
-.logout-hide{
-    display: none;
-}
-
 
 /* .logo-header {
     margin-left: 70px;
