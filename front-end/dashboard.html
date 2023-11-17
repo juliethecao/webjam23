@@ -23,10 +23,10 @@
         
         <hr>
 
-        <a href="#" class="Name">
+        <button class="Name" id="toggleSearchSidebarTable">
             <img src="Name.png" alt="Name"/>
             <span class="NameToolTip"> Name </span>
-        </a>
+        </button>
 
         <a href="#" class="Search">
             <img src="Search.png" alt="Search" border="0" />
@@ -57,6 +57,20 @@
 
     <div style="margin-left:70px">
 
+    <!-- Expanded Content -->
+    <div class="sidebarTable"  id="sidebarTable">
+        <img src="logo-big.png" alt="logo big"/>
+        <div class="spacer"></div>
+        <!-- <img src="Name.png" alt="Name"/> -->
+        <div class="Personal-Information">
+            <h2>Name</h2>
+            <h2>Reviews</h2>
+            <h2>Created</h2>
+            <h2>Liked</h2>
+            <h2>Viewed</h2>
+        </div>
+    </div>
+
     <!-- Page Content -->
     <div class="logo-header">
         <img src="logo-big.png" alt="logo-big" border="0" />
@@ -65,6 +79,20 @@
         <h1>Get started with a professor, course, or building at UCI! <br> 
             Elevate your campus experience, one review at a time!</h1>
     </div>
+      
+    <script>
+
+    document.getElementById('toggleSearchSidebarTable').addEventListener('click', function() {
+        var sidebarTable = document.getElementById('sidebarTable');
+        sidebarTable.classList.toggle('sidebarTable-expanded');
+
+        if (sidebarTable.classList.contains('sidebarTable-expanded')) {
+            sidebar.style.left = '300px'; // Adjust this value to match the sidebarTable width
+        } else {
+            sidebar.style.left = '0px';
+        }
+    });
+    </script>
 
   </body>
 </html>
