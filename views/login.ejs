@@ -5,15 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>zotratr.</title>
     <link href="login.css" rel="stylesheet" type="text/css">
-
 </head>
 <body>
-    <img src="assets/long_logo.png">
     <div class="login-container">
         <% if (messages.error) {messages.error} %>
+        <div class="img">
+            <img src="assets/long_logo.png">
+        </div>
         <form action="/login" method="POST">
             <div class="form-container">
-                <H1>Login</H1>
+                <div class="login-title">Login</div>
                 <div id="email">
                     <label for="email">UCI Email</label>
                     <input type="email" id="email" name="email" required>
@@ -23,7 +24,7 @@
                     <input type="password" id="password" name="password" required>
                 </div>
                 <div class="submit">
-                    <button type="submit">Login</button>
+                    <button type="submit">Submit</button>
                 </div>
                 <a href="/register">Don't have an account? Register</a>
             </div>
