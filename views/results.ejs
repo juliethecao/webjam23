@@ -11,8 +11,8 @@
 
 <script>
 
-function handleClick(name) {
-    fetch('/reviews?name=' + encodeURIComponent(name))
+function handleClick(id) {
+    fetch('/reviews?id=' + encodeURIComponent(id))
         .then(response => response.text())
         .then(html => {
             document.body.innerHTML = html;

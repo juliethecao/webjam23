@@ -5,6 +5,12 @@
 </form>
 
 <form action="/results" method="POST">
+    <label for="filter">Filter</label>
+    <select name="filter" id="filter">
+        <option value="all">all</option>
+        <option value="prof">professors</option>
+        <option value="building">locations</option>
+    </select>
     <label for="search">Search</label>
     <input name="search" id="search" type="text" placeholder="Professor, Building">
     <button type="submit">Submit</button>

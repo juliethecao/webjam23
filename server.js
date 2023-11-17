@@ -47,17 +47,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(methodOverride('_method'));
 
-
-// database.insert({ type:"prof", name:"rover", dep:"ICS", title:"rizzler", reviews:[{"name":"winton","title":"He was coming over, over, over","date":"Nov 2","desc":"Mr. Rover was one of the best rovers ive ever seen. The way he was coming over was so rover of him.","rating":"5"}, {"name":"Babe","title":"FAKE ROVER","date":"Nov 3","desc":"This guy is a fake and hes not even Asian. I came to the hallway and saw some indian dude dancing, pretending to be rover. I still get nightmares","rating":"1"}] });
-// database.insert({ type:"prof", name:"over", dep:"BIO", title:"Doctor", reviews: [] });
-// database.insert({ type:"prof", name:"kai", dep:"ART", title:"failure", reviews: [] });
-
-
-
 // main page
 app.get('/', checkAuthenticated, async (request, response) => {
     const user = await request.user;
-    // console.log(user[0]);
     response.render('index.ejs', { name: user[0].name });
 });
 
@@ -66,32 +58,31 @@ app.post('/createRev', checkAuthenticated, async (request, response) => {
     const info = await request.body;
     const user = await request.user;
     const date = getDateFormat();
-    console.log(info.name, info.title, info.desc, info.rating);
-    console.log(user);
-    console.log(date);
     const newReview = {name: user[0].name, title:info.title, date:date, desc:info.desc, rating:info.rating};
-    database.update({name: info.name, type: "prof"}, { $push: { reviews: newReview } }, {}, function () {
-
+    database.update({_id: info.id}, { $push: { reviews: newReview } }, {}, function () {
     });
-
-    response.redirect(`/results?search=${encodeURIComponent(info.name)}`);
-})
+    const res = await getReviews(info.id);
+    response.render('reviews.ejs', { id: info.id, reviews: res });
+});
 
 // get reviews
 app.get('/reviews', checkAuthenticated, async(request, response) =>{
-    const name = request.query.name;
-    const res = await getReviews(name);
-    response.render('reviews.ejs', { name: name, reviews: res });
+    const id = request.query.id;
+    const res = await getReviews(id);
+    response.render('reviews.ejs', { id: id, reviews: res });
 });
 
 // search results
 app.get('/results', checkAuthenticated, async (request, response) => {
     const search = await request.query.search;
-    const res = await createDivs(search);
+    const filter = await request.query.filter;
+    const res = await createDivs(search, filter);
     response.render('results.ejs', {results: res});
 })
 app.post('/results', checkAuthenticated, async (request, response) => {
-    response.redirect(`/results?search=${encodeURIComponent(request.body.search)}`);
+    const search = request.body.search;
+    const filter = request.body.filter;
+    response.redirect(`/results?search=${encodeURIComponent(search)}&filter=${encodeURIComponent(filter)}`);
 });
 
 //login
@@ -141,9 +132,10 @@ function checkNotAuthenticated(req, res, next){
     next();
 }
 
-async function findDocuments(name) {
+//should change to get doc by id instead of name
+async function findDocuments(id) {
     return new Promise((resolve, reject) => {
-        database.find({ name: name, type: "prof" }, function (err, docs) {
+        database.find({ _id: id}, function (err, docs) {
             if (err) {
                 reject(err);
             } else {
@@ -153,11 +145,13 @@ async function findDocuments(name) {
     });
 } 
 
-async function findAllDocuments(name) {
+async function findAllDocuments(name, filter) {
     return new Promise((resolve, reject) => {
-        // name = "/" + name + "/";
-        console.log(name);
-        database.find({ name: {$regex: new RegExp(name)}, type: "prof" }, function (err, docs) {
+        let query = { name: {$regex: new RegExp(name)}};
+        if (filter !== "all" && filter !== undefined){
+            query.type = filter;
+        }
+        database.find(query, function (err, docs) {
             if (err) {
                 reject(err);
             } else {
@@ -167,8 +161,8 @@ async function findAllDocuments(name) {
     });
 }
 
-async function createDivs(name) {
-    const docs = await findAllDocuments(name);
+async function createDivs(name, filter) {
+    const docs = await findAllDocuments(name, filter);
     let divs = '';
     if (docs.length === 0){
         divs += `<div>No results found</div>`;
@@ -176,19 +170,39 @@ async function createDivs(name) {
     else{
         for (let doc of docs) {
             divs += `
-            <div name="${doc.name}"class="result-box" id="${doc.name}" style="cursor: pointer;" onclick="handleClick('${doc.name}')">
-                Name: ${doc.name}
+            <div name="${doc._id}"class="result-box" id="${doc._id}" style="cursor: pointer;" onclick="handleClick('${doc._id}')">
+                <p>Name: ${doc.name}</p>
+                <p>Type: ${doc.type}</p>
             </div>`;}
         return divs;
     }
 }
 
-async function getReviews(name) {
-    let doc = await findDocuments(name);
+async function getReviews(id) {
+    let doc = await findDocuments(id);
     doc = doc[0];
     let divs = '';
-    if (doc.reviews.length === 0){
-        divs += `<div>No Reviews yet for this professor</div>`
+    if (doc.type === "building"){
+        divs += `<div>
+            <h1>Location: ${doc.name}</h1>
+            <p>School: ${doc.school_type}</p>
+            <p>Building Type: ${doc.building_type}</p>
+        </div>`;
+        if (doc.reviews.length === 0){
+            divs += `<div>No Reviews yet </div>`
+        } else {
+            for (let i = doc.reviews.length - 1; i >= 0; i--) {
+                let review = doc.reviews[i];
+                divs += `
+                <div>
+                    <h3>${review.title}</h3>
+                    <p>Review by: ${review.name}</p>
+                    <p>Date: ${review.date}</p>
+                    <p>Description: ${review.desc}</p>
+                    <p>Rating: ${review.rating}</p>
+                </div>`;
+            }
+        }
     }
     else{
         divs += `<div>
@@ -196,16 +210,20 @@ async function getReviews(name) {
             <p>Title: ${doc.title}</p>
             <p>Department: ${doc.dep}</p>
         </div>`;
-        for (let i = doc.reviews.length - 1; i >= 0; i--) {
-            let review = doc.reviews[i];
-            divs += `
-            <div>
-                <h3>${review.title}</h3>
-                <p>Review by: ${review.name}</p>
-                <p>Date: ${review.date}</p>
-                <p>Description: ${review.desc}</p>
-                <p>Rating: ${review.rating}</p>
-            </div>`;
+        if (doc.reviews.length === 0){
+            divs += `<div>No Reviews yet </div>`
+        } else {
+            for (let i = doc.reviews.length - 1; i >= 0; i--) {
+                let review = doc.reviews[i];
+                divs += `
+                <div>
+                    <h3>${review.title}</h3>
+                    <p>Review by: ${review.name}</p>
+                    <p>Date: ${review.date}</p>
+                    <p>Description: ${review.desc}</p>
+                    <p>Rating: ${review.rating}</p>
+                </div>`;
+            }
         }
     }
     return divs;
@@ -221,10 +239,3 @@ function getDateFormat(){
     return dateString;
 }
 app.listen(8000);
-
-// Prof:
-// {type: prof, name, dep, title, [{reviews}]}
-// review format: {username, title, date, description, rating}
-
-// User:
-// {type: user, name, password, uciemail, [reviews_made]}}

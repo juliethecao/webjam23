@@ -1,4 +1,4 @@
-<h1>Reviews for <%= name %></h1> 
+<!-- <h1>Reviews for NAME HERE  </h1>  -->
 <form action="/logout?_method=DELETE" method="POST">
     <button type="submit">Log Out</button>
 </form>
@@ -16,9 +16,9 @@ like/dislike -->
 
 <div class="review" id="review">
     <button type="submit" onclick="toggleForm()">X</button>
-    <h2>Create Review for <%= name %></h2>
+    <h2>Create Review</h2>
     <form action="/createRev" method="POST">
-        <input type="hidden" name="name" value="<%= name %>">
+        <input type="hidden" name="id" value="<%= id %>">
         <label for="title">Title</label>
         <input type="text" name="title" required>
 
