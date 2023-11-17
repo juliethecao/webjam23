@@ -3,11 +3,6 @@ body {
     font-family: 'Poppins', sans-serif;
     }
 
-  /* .class {
-    height: 100px;
-  } */
-
-
 .sidebar {
     height: 100%;
     width: 5%;
@@ -28,7 +23,7 @@ body {
     display: inline-block;
 }
 
-.sidebarTable {
+.sidebarTable , .sidebarSearchTable {
     background-color: #62b6cb;
     height: 100%;
     width: 300px; /* Set the desired width for the expanded sidebarTable */
@@ -47,7 +42,7 @@ body {
     margin: 0 auto;
 }
 
-.sidebarTable-expanded {
+.sidebarTable-expanded, .sidebarSearchTable-expanded {
     left: 0; /* Bring the sidebarTable into view */
 }
 
@@ -96,7 +91,8 @@ body {
 
 .Search {
     position: relative;
-    display: inline-block
+    display: inline-block;
+    border-radius: 50%;
 }
 
 .SearchToolTip{

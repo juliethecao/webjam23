@@ -23,15 +23,15 @@
         
         <hr>
 
-        <button class="Name" id="toggleSearchSidebarTable">
+        <button class="Name" id="toggleSidebarTable">
             <img src="Name.png" alt="Name"/>
             <span class="NameToolTip"> Name </span>
         </button>
 
-        <a href="#" class="Search">
-            <img src="Search.png" alt="Search" border="0" />
+        <button class="Search" id="toggleSidebarSearchTable">
+            <img src="Search.png" alt="Search"/>
             <span class="SearchToolTip"> Search </span>
-        </a> 
+        </button> 
 
         <a href="#" class="Links">
             <img src="Links.png" alt="Links" border="0" />
@@ -60,8 +60,7 @@
     <!-- Expanded Content -->
     <div class="sidebarTable"  id="sidebarTable">
         <img src="logo-big.png" alt="logo big"/>
-        <div class="spacer"></div>
-        <!-- <img src="Name.png" alt="Name"/> -->
+        <br>
         <div class="Personal-Information">
             <h2>Name</h2>
             <h2>Reviews</h2>
@@ -69,6 +68,12 @@
             <h2>Liked</h2>
             <h2>Viewed</h2>
         </div>
+    </div>
+
+    <div class="sidebarSearchTable" id="sidebarSearchTable">
+        <img src="logo-big.png" alt="logo big"/>
+        <br>
+        <input type="text" placeholder="Search..">
     </div>
 
     <!-- Page Content -->
@@ -81,17 +86,62 @@
     </div>
       
     <script>
+        var isSidebarTableOpen = false;
+        var isSidebarSearchTableOpen = false;
 
-    document.getElementById('toggleSearchSidebarTable').addEventListener('click', function() {
-        var sidebarTable = document.getElementById('sidebarTable');
-        sidebarTable.classList.toggle('sidebarTable-expanded');
+        document.getElementById('toggleSidebarTable').addEventListener('click', function() {
+            toggleSidebar('sidebarTable', 'sidebarSearchTable');
+        });
 
-        if (sidebarTable.classList.contains('sidebarTable-expanded')) {
-            sidebar.style.left = '300px'; // Adjust this value to match the sidebarTable width
-        } else {
-            sidebar.style.left = '0px';
+        document.getElementById('toggleSidebarSearchTable').addEventListener('click', function() {
+            toggleSidebar('sidebarSearchTable', 'sidebarTable');
+        });
+
+
+        function toggleSidebar(sidebarId, otherSidebarId) {
+        var sidebar = document.getElementById('sidebar');
+        var sidebarTable = document.getElementById(sidebarId);
+        var otherSidebarTable = document.getElementById(otherSidebarId);
+
+        // Close the other sidebar if it's open
+        if (otherSidebarTable.classList.contains(otherSidebarId + '-expanded')) {
+            otherSidebarTable.classList.remove(otherSidebarId + '-expanded');
+            if (otherSidebarId === 'sidebarTable') {
+                isSidebarTableOpen = false;
+            } else if (otherSidebarId === 'sidebarSearchTable') {
+                isSidebarSearchTableOpen = false;
+            }
         }
-    });
+
+        // Toggle the current sidebar
+        sidebarTable.classList.toggle(sidebarId + '-expanded');
+        if (sidebarTable.classList.contains(sidebarId + '-expanded')) {
+            sidebar.style.left = '300px'; // Adjust as necessary
+            if (sidebarId === 'sidebarTable') {
+                isSidebarTableOpen = true;
+            } else if (sidebarId === 'sidebarSearchTable') {
+                isSidebarSearchTableOpen = true;
+            }
+        } else {
+            sidebar.style.left = '0px'; // Adjust as necessary
+            if (sidebarId === 'sidebarTable') {
+                isSidebarTableOpen = false;
+            } else if (sidebarId === 'sidebarSearchTable') {
+                isSidebarSearchTableOpen = false;
+            }
+        }
+    }
+
+    // document.getElementById('toggleSidebarTable').addEventListener('click', function() {
+    //     var sidebarTable = document.getElementById('sidebarTable');
+    //     sidebarTable.classList.toggle('sidebarTable-expanded');
+
+    //     if (sidebarTable.classList.contains('sidebarTable-expanded')) {
+    //         sidebar.style.left = '300px';
+    //     } else {
+    //         sidebar.style.left = '0px';
+    //     }
+    // });
     </script>
 
   </body>
