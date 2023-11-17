@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <title>Zoratr</title>
     <link rel="stylesheet" type="text/css" href="dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   </head>
 
@@ -33,20 +34,20 @@
             <span class="SearchToolTip"> Search </span>
         </button> 
 
-        <a href="#" class="Links">
-            <img src="Links.png" alt="Links" border="0" />
+        <button class="Links" ID="toggleSidebarLinksTable">
+            <img src="Links.png" alt="Links" />
             <span class="LinksToolTip"> Links </span>
-        </a> 
+        </button> 
 
-        <a href="#" class="Feedback">
+        <button class="Feedback" id="toggleSidebarFeedbackTable">
             <img src="Feedback.png" alt="Feedback" border="0" />
             <span class="FeedbackToolTip">Feedback</span>
-        </a>
+        </button>
 
-        <a href="#" class="Settings">
+        <button class="Settings" id="toggleSidebarSettingsTable">
             <img src="Settings.png" alt="Settings" border="0" />
             <span class="SettingsToolTip">Settings</span>
-        </a>
+        </button>
 
         <a href="#" class="Logout">
             <img src="LogOut.png" alt="Logout" border="0" />
@@ -73,7 +74,30 @@
     <div class="sidebarSearchTable" id="sidebarSearchTable">
         <img src="logo-big.png" alt="logo big"/>
         <br>
-        <input type="text" placeholder="Search..">
+
+        <div class="searchContainer">
+            <input type="text" placeholder="Search.." name="Search">
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </div>  
+
+        <div class="Professor-Information">
+            
+        </div>
+    </div>
+
+    <div class="sidebarLinksTable" id="sidebarLinksTable">
+        <img src="logo-big.png" alt="logo big"/>
+        <br>
+    </div>
+
+    <div class="sidebarFeedbackTable" id="sidebarFeedbackTable">
+        <img src="logo-big.png" alt="logo big"/>
+        <br>
+    </div>
+
+    <div class="sidebarSettingsTable" id="sidebarSettingsTable">
+        <img src="logo-big.png" alt="logo big"/>
+        <br>
     </div>
 
     <!-- Page Content -->
@@ -86,7 +110,7 @@
     </div>
       
     <script>
-        var sidebarIds = ['sidebarTable', 'sidebarSearchTable'];
+        var sidebarIds = ['sidebarTable', 'sidebarSearchTable', 'sidebarLinksTable', 'sidebarFeedbackTable', 'sidebarSettingsTable'];
 
         document.getElementById('toggleSidebarTable').addEventListener('click', function() {
             toggleSidebar('sidebarTable');
@@ -96,10 +120,17 @@
             toggleSidebar('sidebarSearchTable');
         });
 
-        // document.getElementById('toggleSidebarLinksTable').addEventListener('click', function() {
-        //     toggleSidebar('sidebarLinksTable');
-        // }); 'sidebarLinksTable'
+        document.getElementById('toggleSidebarLinksTable').addEventListener('click', function() {
+            toggleSidebar('sidebarLinksTable');
+        });
 
+        document.getElementById('toggleSidebarFeedbackTable').addEventListener('click', function() {
+            toggleSidebar('sidebarFeedbackTable');
+        });
+
+        document.getElementById('toggleSidebarSettingsTable').addEventListener('click', function() {
+            toggleSidebar('sidebarSettingsTable');
+        });
 
         function toggleSidebar(sidebarIdToToggle) {
             var sidebar = document.getElementById('sidebar');

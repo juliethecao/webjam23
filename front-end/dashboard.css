@@ -23,7 +23,7 @@ body {
     display: inline-block;
 }
 
-.sidebarTable , .sidebarSearchTable {
+.sidebarTable , .sidebarSearchTable, .sidebarLinksTable, .sidebarFeedbackTable, .sidebarSettingsTable {
     background-color: #62b6cb;
     height: 100%;
     width: 300px; /* Set the desired width for the expanded sidebarTable */
@@ -42,7 +42,36 @@ body {
     margin: 0 auto;
 }
 
-.sidebarTable-expanded, .sidebarSearchTable-expanded {
+.sidebarSearchTable img {
+    max-width: 80%;
+    height: auto; 
+    display: block; /* Ensures the image does not have extra space below */
+    margin: 0 auto;
+}
+
+.sidebarLinksTable img {
+    max-width: 80%;
+    height: auto; 
+    display: block; /* Ensures the image does not have extra space below */
+    margin: 0 auto;
+}
+
+.sidebarFeedbackTable img {
+    max-width: 80%;
+    height: auto; 
+    display: block; /* Ensures the image does not have extra space below */
+    margin: 0 auto;
+}
+
+.sidebarSettingsTable img {
+    max-width: 80%;
+    height: auto; 
+    display: block; /* Ensures the image does not have extra space below */
+    margin: 0 auto;
+}
+
+.sidebarTable-expanded, .sidebarSearchTable-expanded, .sidebarLinksTable-expanded
+, .sidebarFeedbackTable-expanded, .sidebarSettingsTable-expanded {
     left: 0; /* Bring the sidebarTable into view */
 }
 
@@ -120,9 +149,42 @@ body {
     opacity: 1;
 }
 
+.searchContainer {
+    display: flex; 
+    align-items: center; 
+    padding: 6px;
+    margin: 25px;
+}
+
+.searchContainer input[type=text] {
+    flex-grow: 1;
+    padding: 6px;
+    font-size: 17px;
+    border: none;
+}
+
+.searchContainer button {
+    padding: 6px 10px;
+    background: #ddd;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+}
+  
+
+.Professor-Information {
+    gap: 10px;
+    background-color: #bee9e8;
+    padding: 20px;
+    margin: 4%;
+    border-radius: 8px;
+    overflow: scroll;
+}
+
 .Links {
     position: relative;
-    display: inline-block
+    display: inline-block;
+    border-radius: 50%;
 }
 
 .LinksToolTip{
@@ -153,7 +215,8 @@ body {
 
 .Feedback{
     position: relative;
-    display: inline-block
+    display: inline-block;
+    border-radius: 50%;
 }
 
 .FeedbackToolTip{
@@ -184,7 +247,8 @@ body {
 
 .Settings{
     position: relative;
-    display: inline-block
+    display: inline-block;
+    border-radius: 50%;
 }
 
 .SettingsToolTip{
