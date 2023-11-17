@@ -86,62 +86,37 @@
     </div>
       
     <script>
-        var isSidebarTableOpen = false;
-        var isSidebarSearchTableOpen = false;
+        var sidebarIds = ['sidebarTable', 'sidebarSearchTable'];
 
         document.getElementById('toggleSidebarTable').addEventListener('click', function() {
-            toggleSidebar('sidebarTable', 'sidebarSearchTable');
+            toggleSidebar('sidebarTable');
         });
 
         document.getElementById('toggleSidebarSearchTable').addEventListener('click', function() {
-            toggleSidebar('sidebarSearchTable', 'sidebarTable');
+            toggleSidebar('sidebarSearchTable');
         });
 
+        // document.getElementById('toggleSidebarLinksTable').addEventListener('click', function() {
+        //     toggleSidebar('sidebarLinksTable');
+        // }); 'sidebarLinksTable'
 
-        function toggleSidebar(sidebarId, otherSidebarId) {
-        var sidebar = document.getElementById('sidebar');
-        var sidebarTable = document.getElementById(sidebarId);
-        var otherSidebarTable = document.getElementById(otherSidebarId);
 
-        // Close the other sidebar if it's open
-        if (otherSidebarTable.classList.contains(otherSidebarId + '-expanded')) {
-            otherSidebarTable.classList.remove(otherSidebarId + '-expanded');
-            if (otherSidebarId === 'sidebarTable') {
-                isSidebarTableOpen = false;
-            } else if (otherSidebarId === 'sidebarSearchTable') {
-                isSidebarSearchTableOpen = false;
-            }
+        function toggleSidebar(sidebarIdToToggle) {
+            var sidebar = document.getElementById('sidebar');
+            var anySidebarExpanded = false;
+
+            sidebarIds.forEach(sidebarId => {
+                var sidebarElement = document.getElementById(sidebarId);
+                if (sidebarId === sidebarIdToToggle) {
+                    sidebarElement.classList.toggle(sidebarId + '-expanded');
+                    anySidebarExpanded = anySidebarExpanded || sidebarElement.classList.contains(sidebarId + '-expanded');
+                } else {
+                    sidebarElement.classList.remove(sidebarId + '-expanded');
+                }
+            });     
+
+            sidebar.style.left = anySidebarExpanded ? '300px' : '0px';
         }
-
-        // Toggle the current sidebar
-        sidebarTable.classList.toggle(sidebarId + '-expanded');
-        if (sidebarTable.classList.contains(sidebarId + '-expanded')) {
-            sidebar.style.left = '300px'; // Adjust as necessary
-            if (sidebarId === 'sidebarTable') {
-                isSidebarTableOpen = true;
-            } else if (sidebarId === 'sidebarSearchTable') {
-                isSidebarSearchTableOpen = true;
-            }
-        } else {
-            sidebar.style.left = '0px'; // Adjust as necessary
-            if (sidebarId === 'sidebarTable') {
-                isSidebarTableOpen = false;
-            } else if (sidebarId === 'sidebarSearchTable') {
-                isSidebarSearchTableOpen = false;
-            }
-        }
-    }
-
-    // document.getElementById('toggleSidebarTable').addEventListener('click', function() {
-    //     var sidebarTable = document.getElementById('sidebarTable');
-    //     sidebarTable.classList.toggle('sidebarTable-expanded');
-
-    //     if (sidebarTable.classList.contains('sidebarTable-expanded')) {
-    //         sidebar.style.left = '300px';
-    //     } else {
-    //         sidebar.style.left = '0px';
-    //     }
-    // });
     </script>
 
   </body>
