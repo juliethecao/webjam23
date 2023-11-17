@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+
+
 <html lang="en-US">
   <head>
     <meta charset="utf-8" />
@@ -15,45 +17,90 @@
     }
   </style>
   <body>
-    <!-- Sidebar -->
-    <div class="sidebar" id="sidebar">
-        <a href="#" class="Logo">
-            <img src="logo.png" alt="Zotratr Logo">
-        </a> 
-        
-        <hr>
-
-        <a href="#" class="Name">
-            <img src="Name.png" alt="Name"/>
-            <span class="NameToolTip"> Name </span>
-        </a>
-
-        <a href="#" class="Search">
-            <img src="Search.png" alt="Search" border="0" />
-            <span class="SearchToolTip"> Search </span>
-        </a> 
-
-        <a href="#" class="Links">
-            <img src="Links.png" alt="Links" border="0" />
-            <span class="LinksToolTip"> Links </span>
-        </a> 
-
-        <a href="#" class="Feedback">
-            <img src="Feedback.png" alt="Feedback" border="0" />
-            <span class="FeedbackToolTip">Feedback</span>
-        </a>
-
-        <a href="#" class="Settings">
-            <img src="Settings.png" alt="Settings" border="0" />
-            <span class="SettingsToolTip">Settings</span>
-        </a>
-
-        <a href="#" class="Logout">
-            <img src="LogOut.png" alt="Logout" border="0" />
-            <span class="LogoutToolTip">Logout</span>
-        </a> 
-
-    </div>
+    <body>
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <a href="#" class="Logo">
+                <img src="logo.png" alt="Zotratr Logo">
+            </a> 
+            
+            <hr>
+    
+            <button class="Name" id="toggleSidebarTable">
+                <img src="Name.png" alt="Name"/>
+                <span class="NameToolTip"> Name </span>
+            </button>
+    
+            <button class="Search" id="toggleSidebarSearchTable">
+                <img src="Search.png" alt="Search"/>
+                <span class="SearchToolTip"> Search </span>
+            </button> 
+    
+            <button class="Links" ID="toggleSidebarLinksTable">
+                <img src="Links.png" alt="Links" />
+                <span class="LinksToolTip"> Links </span>
+            </button> 
+    
+            <button class="Feedback" id="toggleSidebarFeedbackTable">
+                <img src="Feedback.png" alt="Feedback" border="0" />
+                <span class="FeedbackToolTip">Feedback</span>
+            </button>
+    
+            <button class="Settings" id="toggleSidebarSettingsTable">
+                <img src="Settings.png" alt="Settings" border="0" />
+                <span class="SettingsToolTip">Settings</span>
+            </button>
+    
+            <a href="#" class="Logout">
+                <img src="LogOut.png" alt="Logout" border="0" />
+                <span class="LogoutToolTip">Logout</span>
+            </a> 
+    
+        </div>
+    
+        <div style="margin-left:70px">
+    
+        <!-- Expanded Content -->
+        <div class="sidebarTable"  id="sidebarTable">
+            <img src="logo-big.png" alt="logo big"/>
+            <br>
+            <div class="Personal-Information">
+                <h2>Name</h2>
+                <h2>Reviews</h2>
+                <h2>Created</h2>
+                <h2>Liked</h2>
+                <h2>Viewed</h2>
+            </div>
+        </div>
+    
+        <div class="sidebarSearchTable" id="sidebarSearchTable">
+            <img src="logo-big.png" alt="logo big"/>
+            <br>
+    
+            <div class="searchContainer">
+                <input type="text" placeholder="Search.." name="Search">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </div>  
+    
+            <div class="Professor-Information">
+                
+            </div>
+        </div>
+    
+        <div class="sidebarLinksTable" id="sidebarLinksTable">
+            <img src="logo-big.png" alt="logo big"/>
+            <br>
+        </div>
+    
+        <div class="sidebarFeedbackTable" id="sidebarFeedbackTable">
+            <img src="logo-big.png" alt="logo big"/>
+            <br>
+        </div>
+    
+        <div class="sidebarSettingsTable" id="sidebarSettingsTable">
+            <img src="logo-big.png" alt="logo big"/>
+            <br>
+        </div>
 
     <div style="margin-left:70px">
 
@@ -82,4 +129,45 @@
         <div class="Date">MM/DD/YYYY</div>
         <div class="Description"">Lorem ipsum dolor sit amet, consectetur adipiscing elit...></div>
     </div>
-    
+      <script>
+        var sidebarIds = ['sidebarTable', 'sidebarSearchTable', 'sidebarLinksTable', 'sidebarFeedbackTable', 'sidebarSettingsTable'];
+
+        document.getElementById('toggleSidebarTable').addEventListener('click', function() {
+            toggleSidebar('sidebarTable');
+        });
+
+        document.getElementById('toggleSidebarSearchTable').addEventListener('click', function() {
+            toggleSidebar('sidebarSearchTable');
+        });
+
+        document.getElementById('toggleSidebarLinksTable').addEventListener('click', function() {
+            toggleSidebar('sidebarLinksTable');
+        });
+
+        document.getElementById('toggleSidebarFeedbackTable').addEventListener('click', function() {
+            toggleSidebar('sidebarFeedbackTable');
+        });
+
+        document.getElementById('toggleSidebarSettingsTable').addEventListener('click', function() {
+            toggleSidebar('sidebarSettingsTable');
+        });
+
+        function toggleSidebar(sidebarIdToToggle) {
+            var sidebar = document.getElementById('sidebar');
+            var anySidebarExpanded = false;
+
+            sidebarIds.forEach(sidebarId => {
+                var sidebarElement = document.getElementById(sidebarId);
+                if (sidebarId === sidebarIdToToggle) {
+                    sidebarElement.classList.toggle(sidebarId + '-expanded');
+                    anySidebarExpanded = anySidebarExpanded || sidebarElement.classList.contains(sidebarId + '-expanded');
+                } else {
+                    sidebarElement.classList.remove(sidebarId + '-expanded');
+                }
+            });     
+
+            sidebar.style.left = anySidebarExpanded ? '300px' : '0px';
+        }
+        </script>
+    </body>
+</html> 

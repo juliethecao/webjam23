@@ -1,4 +1,19 @@
-body {
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <title>Zoratr</title>
+    <link rel="stylesheet" type="text/css" href="dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  </head>
+
+  <style>
+    hr {
+      color:  #bee9e8;
+      border-radius: 70%;
+    }
+    body {
     background-color: #defffe;
     font-family: 'Poppins', sans-serif;
     }
@@ -305,109 +320,129 @@ body {
     visibility: visible;
     opacity: 1;
 }
+  </style>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <a href="#" class="Logo">
+            <img src="logo.png" alt="Zotratr Logo">
+        </a> 
+        
+        <hr>
 
-.logo-header {
-    margin-left: 70px;
-}
+        <button class="Name" id="toggleSidebarTable">
+            <img src="Name.png" alt="Name"/>
+            <span class="NameToolTip"> Name </span>
+        </button>
 
-.main-content {
-    margin-left: 70px;
-}
+        <button class="Search" id="toggleSidebarSearchTable">
+            <img src="Search.png" alt="Search"/>
+            <span class="SearchToolTip"> Search </span>
+        </button> 
 
-.professor {
-    display: flex;
-    background-color: #bee9e8;
-    margin-left: 70px;
-    width: auto;
-    height: 100%;
-    justify-content: space-around;
-}
+        <button class="Links" ID="toggleSidebarLinksTable">
+            <img src="Links.png" alt="Links" />
+            <span class="LinksToolTip"> Links </span>
+        </button> 
 
-.professor-child {
-    width: 50%;
-    float: left;
-    padding: 20px;
+        <button class="Feedback" id="toggleSidebarFeedbackTable">
+            <img src="Feedback.png" alt="Feedback" border="0" />
+            <span class="FeedbackToolTip">Feedback</span>
+        </button>
 
-}  
+        <button class="Settings" id="toggleSidebarSettingsTable">
+            <img src="Settings.png" alt="Settings" border="0" />
+            <span class="SettingsToolTip">Settings</span>
+        </button>
 
-.professor-info {
-    background-color: #bee9e8;
-    margin-left: 70px;
-    width: auto;
-    height: 100%;
-}
+        <a href="#" class="Logout">
+            <img src="LogOut.png" alt="Logout" border="0" />
+            <span class="LogoutToolTip">Logout</span>
+        </a> 
 
-.professor-rating {
-    background-color: #bee9e8;
-    margin-left: 70px;
-    width: auto;
-    height: 100%;
-}
+    </div>
 
-.review-area {
-    display: flex;
-    align-items: center;
-}
+    <div style="margin-left:70px">
 
-.rating, .reviews {
-    display: flex;
-    align-items: center;
-    margin-right: 15px;
-    color: #333;
-}
+    <!-- Expanded Content -->
+    <div class="sidebarTable"  id="sidebarTable">
+        <img src="logo-big.png" alt="logo big"/>
+        <br>
+        <div class="Personal-Information">
+            <h2>Name</h2>
+            <h2>Reviews</h2>
+            <h2>Created</h2>
+            <h2>Liked</h2>
+            <h2>Viewed</h2>
+        </div>
+    </div>
 
-.rating i, .reviews i {
-    margin-right: 5px;
-}
+    <div class="sidebarSearchTable" id="sidebarSearchTable">
+        <img src="logo-big.png" alt="logo big"/>
+        <br>
 
-.bookmark i {
-    color: #333;
-}
+        <div class="searchContainer">
+            <input type="text" placeholder="Search.." name="Search">
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </div>  
 
-.review-content {
-    display: grid;
-    grid-template-columns: auto auto auto;
-    gap: 10px;
-    background-color: #bee9e8;
-    padding: 20px;
-    margin: 4%;
-    border-radius: 8px;
-    overflow: scroll;
-}
+        <div class="Professor-Information">
+            
+        </div>
+    </div>
 
-.TitleOfReview{
-    font-size: 40px;
-    grid-column-start: 1;
-    grid-column-end: 3;
-}
+    <div class="sidebarLinksTable" id="sidebarLinksTable">
+        <img src="logo-big.png" alt="logo big"/>
+        <br>
+    </div>
 
-.Rating{
-    grid-column-start: 3;
-    grid-column-end: 4;
-}
+    <div class="sidebarFeedbackTable" id="sidebarFeedbackTable">
+        <img src="logo-big.png" alt="logo big"/>
+        <br>
+    </div>
 
-.Name{
-    grid-row-start: 2;
-    justify-self: start;
-}
+    <div class="sidebarSettingsTable" id="sidebarSettingsTable">
+        <img src="logo-big.png" alt="logo big"/>
+        <br>
+    </div>
 
-.Date{
-    justify-self: start;
-}
+<script>
+    var sidebarIds = ['sidebarTable', 'sidebarSearchTable', 'sidebarLinksTable', 'sidebarFeedbackTable', 'sidebarSettingsTable'];
 
-.Description{
-    grid-row-start: 3;
-}
+    document.getElementById('toggleSidebarTable').addEventListener('click', function() {
+        toggleSidebar('sidebarTable');
+    });
 
-@media screen and (max-width: 600px) {
-    .main-content {
-        margin-left: 50px; 
+    document.getElementById('toggleSidebarSearchTable').addEventListener('click', function() {
+        toggleSidebar('sidebarSearchTable');
+    });
+
+    document.getElementById('toggleSidebarLinksTable').addEventListener('click', function() {
+        toggleSidebar('sidebarLinksTable');
+    });
+
+    document.getElementById('toggleSidebarFeedbackTable').addEventListener('click', function() {
+        toggleSidebar('sidebarFeedbackTable');
+    });
+
+    document.getElementById('toggleSidebarSettingsTable').addEventListener('click', function() {
+        toggleSidebar('sidebarSettingsTable');
+    });
+
+    function toggleSidebar(sidebarIdToToggle) {
+        var sidebar = document.getElementById('sidebar');
+        var anySidebarExpanded = false;
+
+        sidebarIds.forEach(sidebarId => {
+            var sidebarElement = document.getElementById(sidebarId);
+            if (sidebarId === sidebarIdToToggle) {
+                sidebarElement.classList.toggle(sidebarId + '-expanded');
+                anySidebarExpanded = anySidebarExpanded || sidebarElement.classList.contains(sidebarId + '-expanded');
+            } else {
+                sidebarElement.classList.remove(sidebarId + '-expanded');
+            }
+        });     
+
+        sidebar.style.left = anySidebarExpanded ? '300px' : '0px';
     }
-}
-
-@media screen and (max-width: 400px) {
-    .main-content {
-        margin-left: 20px;
-    }
-}
-
+</script>
