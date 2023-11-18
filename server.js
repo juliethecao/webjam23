@@ -48,17 +48,13 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(methodOverride('_method'));
 
-
-// database.insert({ type:"prof", name:"rover", reviews:[{"name":"winton","title":"He was coming over, over, over","date":"Nov 2","desc":"Mr. Rover was one of the best rovers ive ever seen. The way he was coming over was so rover of him.","rating":"5"}, {"name":"Babe","title":"FAKE ROVER","date":"Nov 3","desc":"This guy is a fake and hes not even Asian. I came to the hallway and saw some indian dude dancing, pretending to be rover. I still get nightmares","rating":"1"}] });
-// database.insert({ type:"prof", name:"over" });
-// database.insert({ type:"prof", name:"kai" });
-
-
+// database.insert({ type:"prof", name:"rover", reviews:[{"name":"winton","title":"He was coming over, over, over","date":"Nov 2","desc":"Mr. Rover was one of the best rovers ive ever seen. The way he was coming over was so rover of him.","rating":"5"}, {"name":"Babe","title":"FAKE ROVER","date":"Nov 3","desc":"This guy is a fake. I came to the hallway and saw some indian dude dancing, pretending to be rover. I still get nightmares","rating":"1"}] });
+// database.insert({"reviews": [], "type":"building","name":"Art Culture & Technology (ACT)","building_type":"Academic Units & Schools","school_type":"Arts","latlon":"33.65071192475636, -117.84493567558403"});
+// database.insert({"reviews": [], "type":"building","name":"rover building","building_type":"Academic Units & Schools","school_type":"Arts","latlon":"33.65071192475636, -117.84493567558403"});
 
 // main page
 app.get('/', checkAuthenticated, async (request, response) => {
     const user = await request.user;
-    // console.log(user[0]);
     response.render('index.ejs', { name: user[0].name });
 });
 
@@ -67,33 +63,31 @@ app.post('/createRev', checkAuthenticated, async (request, response) => {
     const info = await request.body;
     const user = await request.user;
     const date = getDateFormat();
-    console.log(info.name, info.title, info.desc, info.rating);
-    console.log(user);
-    console.log(date);
-    const result = await findAsync();
-    const newReview = {name: user.name, title:info.title, date:date, desc:info.desc, rating:info.rating};
-    database.update({name: info.name, type: "prof"}, { $addToSet: { reviews: newReview } }, {}, function () {
-
+    const newReview = {name: user[0].name, title:info.title, date:date, desc:info.desc, rating:info.rating};
+    database.update({_id: info.id}, { $push: { reviews: newReview } }, {}, function () {
     });
-
-    response.redirect(`/results?search=${encodeURIComponent(info.name)}`);
-})
+    const res = await getReviews(info.id);
+    response.render('reviews.ejs', { id: info.id, reviews: res });
+});
 
 // get reviews
 app.get('/reviews', checkAuthenticated, async(request, response) =>{
-    const name = request.query.name;
-    const res = await getReviews(name);
-    response.render('reviews.ejs', { name: name, reviews: res });
+    const id = request.query.id;
+    const res = await getReviews(id);
+    response.render('reviews.ejs', { id: id, reviews: res });
 });
 
 // search results
 app.get('/results', checkAuthenticated, async (request, response) => {
     const search = await request.query.search;
-    const res = await createDivs(search);
+    const filter = await request.query.filter;
+    const res = await createDivs(search, filter);
     response.render('results.ejs', {results: res});
 })
 app.post('/results', checkAuthenticated, async (request, response) => {
-    response.redirect(`/results?search=${encodeURIComponent(request.body.search)}`);
+    const search = request.body.search;
+    const filter = request.body.filter;
+    response.redirect(`/results?search=${encodeURIComponent(search)}&filter=${encodeURIComponent(filter)}`);
 });
 
 //login
@@ -143,9 +137,26 @@ function checkNotAuthenticated(req, res, next){
     next();
 }
 
-async function findDocuments(name) {
+//should change to get doc by id instead of name
+async function findDocuments(id) {
     return new Promise((resolve, reject) => {
-        database.find({ name: name, type: "prof" }, function (err, docs) {
+        database.find({ _id: id}, function (err, docs) {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(docs);
+            }
+        });
+    });
+} 
+
+async function findAllDocuments(name, filter) {
+    return new Promise((resolve, reject) => {
+        let query = { name: {$regex: new RegExp(name.toLowerCase())}};
+        if (filter !== "all" && filter !== undefined){
+            query.type = filter;
+        }
+        database.find(query, function (err, docs) {
             if (err) {
                 reject(err);
             } else {
@@ -155,50 +166,100 @@ async function findDocuments(name) {
     });
 }
 
-async function createDivs(name) {
-    const docs = await findDocuments(name);
+async function createDivs(name, filter) {
+    const docs = await findAllDocuments(name, filter);
     let divs = '';
-    for (let doc of docs) {
-        divs += `
-        <div name="${doc.name}"class="result-box" id="${doc.name}" style="cursor: pointer;" onclick="handleClick('${doc.name}')">
-            Name: ${doc.name}
-        </div>`;}
-    return divs;
+    if (docs.length === 0){
+        divs += `<div>No results found</div>`;
+    }
+    else{
+        for (let doc of docs) {
+            divs += `
+            <div name="${doc._id}"class="result-box" id="${doc._id}" style="cursor: pointer;" onclick="handleClick('${doc._id}')">
+                <p>Name: ${doc.name}</p>
+                <p>Type: ${doc.type}</p>
+            </div>`;}
+        return divs;
+    }
 }
 
-async function getReviews(name) {
-    let doc = await findDocuments(name);
+async function getReviews(id) {
+    let doc = await findDocuments(id);
     doc = doc[0];
     let divs = '';
-    for (let review of doc.reviews) {
-        divs += `
-        <div>
-            <h2>${review.title}</h2>
-            <p>Username: ${review.name}</p>
-            <p>Date: ${review.date}</p>
-            <p>Description: ${review.desc}</p>
-            <p>Rating: ${review.rating}</p>
+    if (doc.type === "building"){
+        divs += `<div>
+            <h1>Location: ${doc.name}</h1>
+            <p>School: ${doc.school_type}</p>
+            <p>Building Type: ${doc.building_type}</p>
         </div>`;
+        // divs +=  ``
+        if (doc.reviews.length === 0){
+            divs += `<div>No Reviews yet </div>`
+        } else {
+            for (let i = doc.reviews.length - 1; i >= 0; i--) {
+                let review = doc.reviews[i];
+                divs += `
+                <div>
+                    <h3>${review.title}</h3>
+                    <p>Review by: ${review.name}</p>
+                    <p>Date: ${review.date}</p>
+                    <p>Description: ${review.desc}</p>
+                    <p>Rating: ${review.rating}</p>
+                </div>`;
+            }
+        }
+    }
+    else{
+        divs += `<div>
+            <h1>Professor: ${doc.name}</h1>
+            <p>Title: ${doc.title}</p>
+            <p>Department: ${doc.dep}</p>
+        </div>`;
+        if (doc.reviews.length === 0){
+            divs += `<div>No Reviews yet </div>`
+        } else {
+            for (let i = doc.reviews.length - 1; i >= 0; i--) {
+                let review = doc.reviews[i];
+                divs += `
+                <div>
+                    <h3>${review.title}</h3>
+                    <p>Review by: ${review.name}</p>
+                    <p>Date: ${review.date}</p>
+                    <p>Description: ${review.desc}</p>
+                    <p>Rating: ${review.rating}</p>
+                </div>`;
+            }
+        }
     }
     return divs;
 }
 
 function getDateFormat(){
     const date = new Date();
-
     const day = date.getDate();
     const month = date.getMonth() + 1;
     const year = date.getFullYear();
-
     const dateString = month + "/" + day + "/" + year;
 
     return dateString;
 }
 app.listen(8000);
 
-// Prof:
-// {type: prof, name, dep, title, [{reviews}]}
-// review format: {username, title, date, description, rating}
+const fetch = require('node-fetch');
+const url = 'https://api.peterportal.org/rest/v0/instructors/all';  // Replace with the correct endpoint
+fetch(url)
+.then(response => response.json())
+.then(data =>{
+    data.map(professor => {
+        const doc = {
+            type: "prof",
+            name: professor.name.toLowerCase(),
+            dep: professor.department,
+            title: professor.title,
+            reviews: []
+        };
+        database.insert(doc, function(err, doc){});
+        });
+    });
 
-// User:
-// {type: user, name, password, uciemail, [reviews_made]}}

@@ -1,3 +1,9 @@
+.result-box{
+    border-width: 3px;
+    border-color: black;
+    background-color: #fffdaf;
+}
+
 @font-face {
     font-family: 'Calibri';
     src: local('Calibri'), sans-serif;
@@ -42,7 +48,7 @@ body {
     padding: 20px;
 }
 
-.homepage-container {
+.resultspage-container {
     padding-left: 30px;
     padding-top: 30px;
 }
@@ -60,7 +66,7 @@ h1 {
     gap: 1vw;
 }
 
-.submit button {
+.resultspage-container button {
     display: grid;
     align-items: center;
     justify-content: center;
@@ -70,6 +76,10 @@ h1 {
     padding: 5px 8px 5px 8px;
     border-color: #62b6cb;
     font-size: 16px;
+}
+
+.resultsquery-container {
+    padding-left: 30px;
 }
 
 input,

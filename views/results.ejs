@@ -1,46 +1,107 @@
-
-<h1>Results</h1>
-<form action="/logout?_method=DELETE" method="POST">
-    <button type="submit">Log Out</button>
-</form>
-<form action="/" method="GET">
-    <button type="submit">Home</button>
-</form>
-
-<h2>Here they are <%- results %></h2>
-
-<script>
-
-function handleClick(name) {
-    // current_item = name;
-    // console.log(name);
-    fetch('/reviews?name=' + encodeURIComponent(name))
-        .then(response => response.text())
-        .then(html => {
-            // Insert the HTML into the DOM
-            document.body.innerHTML = html;
-        })
-        .catch(error => console.error('Error:', error));
-}
-
-function toggleForm() {
-        console.log('skadoosh');
-        const form = document.getElementById('review');
-        if (form.style.display === 'none') {
-            form.style.display = 'block';
-        } else {
-            form.style.display = 'none';
-        }
-}
-</script>   
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zotratr.</title>
+    <link href="results.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div class="sidebar" id="sidebar">
+        <a href="#" class="Logo">
+            <img src="assets/short_logo.png" alt="Zotratr Logo">
+        </a> 
+        
+        <div class="rectangle"></div>
+        
+        <div class="menu-items">
+            <button class="Name">
+                <img src="assets/profile.png" alt="Name"/>
+                <span class="NameToolTip"> Profile </span>
+            </button>
     
-    <style>
-        .result-box{
-            border-width: 3px;
-            border-color: black;
-            background-color: pink;
+            <button class="Search">
+                <img src="assets/search.png" alt="Search"/>
+                <span class="SearchToolTip"> Search </span>
+            </button> 
+    
+            <button class="Links">
+                <img src="assets/links.png" alt="Links" />
+                <span class="LinksToolTip"> Links </span>
+            </button> 
+    
+            <button class="Feedback">
+                <img src="assets/feedback.png" alt="Feedback" border="0" />
+                <span class="FeedbackToolTip">Feedback</span>
+            </button>
+    
+            <button class="Settings">
+                <img src="assets/settings.png" alt="Settings" border="0" />
+                <span class="SettingsToolTip">Settings</span>
+            </button>
+            
+            <form action="/logout?_method=DELETE" method="POST">
+                <button class="Logout">
+                    <img src="assets/logout.png" alt="Logout" border="0" />
+                    <span class="LogoutToolTip">Logout</span>
+                </button> 
+            </form>
+           
+        </div>
+    </div>
+    <div class="resultspage-container">
+        <form action="/" method="GET">
+            <button type="submit">Home</button>
+        </form>
+        
+        <h1>Results</h1>
+
+        <div class="resultsquery-container">
+            <h2>Here they are <%- results %></h2>
+        </div>
+    </div>
+
+    <script>
+
+        // function handleClick(name) {
+        //     // current_item = name;
+        //     // console.log(name);
+        //     fetch('/reviews?name=' + encodeURIComponent(name))
+        //         .then(response => response.text())
+        //         .then(html => {
+        //             // Insert the HTML into the DOM
+        //             document.body.innerHTML = html;
+        //         })
+        //         .catch(error => console.error('Error:', error));
+        // }
+
+        // function toggleForm() {
+        //         console.log('skadoosh');
+        //         const form = document.getElementById('review');
+        //         if (form.style.display === 'none') {
+        //             form.style.display = 'block';
+        //         } else {
+        //             form.style.display = 'none';
+        //         }
+        // }
+        function handleClick(id) {
+        fetch('/reviews?id=' + encodeURIComponent(id))
+            .then(response => response.text())
+            .then(html => {
+                document.body.innerHTML = html;
+            })
+            .catch(error => console.error('Error:', error));
         }
-    </style> 
 
-
-
+        function toggleForm() {
+                console.log('skadoosh');
+                const form = document.getElementById('review');
+                if (form.style.display === 'none') {
+                    form.style.display = 'block';
+                } else {
+                    form.style.display = 'none';
+                }
+        }
+    </script>   
+</body>
+</html>

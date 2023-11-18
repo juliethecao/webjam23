@@ -13,51 +13,70 @@
         <a href="#" class="Logo">
             <img src="assets/short_logo.png" alt="Zotratr Logo">
         </a> 
-        <!-- <hr> -->
+        
         <div class="rectangle"></div>
-        <a href="#" class="Name">
-            <img src="assets/profile.png" alt="Name"/>
-        </a>
-        <div class="name-hide">Name</div>
-
-        <a href="#" class="Search">
-            <img src="assets/search.png" alt="Search" />
-        </a> 
-        <div class="search-hide">Search</div>
-
-        <a href="#" class="Links">
-            <img src="assets/links.png" alt="Links" />
-        </a> 
-        <div class="links-hide">Links</div>
-
-        <a href="#" class="Feedback">
-            <img src="assets/feedback.png" alt="Feedback" />
-        </a>
-        <div class="feedback-hide">Feedback</div>
-
-        <a href="#" class="Settings">
-            <img src="assets/settings.png" alt="Settings" />
-        </a>
-        <div class="settings-hide">Settings</div>
-
-        <!-- <a href="#" class="Logout">
-            <img src="assets/logout.png" alt="Logout"/>
-        </a>  -->
-        <div class="logout-hide">Logout</div>
-        <form action="/logout?_method=DELETE" method="POST">
-            <button type="submit"><img src="assets/logout.png" alt="Logout"/></button>
-        </form>
+        
+        <div class="menu-items">
+            <button class="Name">
+                <img src="assets/profile.png" alt="Name"/>
+                <span class="NameToolTip"> Profile </span>
+            </button>
+    
+            <button class="Search">
+                <img src="assets/search.png" alt="Search"/>
+                <span class="SearchToolTip"> Search </span>
+            </button> 
+    
+            <button class="Links">
+                <img src="assets/links.png" alt="Links" />
+                <span class="LinksToolTip"> Links </span>
+            </button> 
+    
+            <button class="Feedback">
+                <img src="assets/feedback.png" alt="Feedback" border="0" />
+                <span class="FeedbackToolTip">Feedback</span>
+            </button>
+    
+            <button class="Settings">
+                <img src="assets/settings.png" alt="Settings" border="0" />
+                <span class="SettingsToolTip">Settings</span>
+            </button>
+            
+            <form action="/logout?_method=DELETE" method="POST">
+                <button class="Logout">
+                    <img src="assets/logout.png" alt="Logout" border="0" />
+                    <span class="LogoutToolTip">Logout</span>
+                </button> 
+            </form>
+           
+        </div>
 
     </div>
-    <h1>Welcome <%= name %>!</h1>
-    
+    <div class="homepage-container">
+        <h1>Welcome <%= name %>!</h1>
 
-    <form action="/results" method="POST">
-        <label for="search">Search</label>
-        <input name="search" id="search" type="text" placeholder="Professor, Building">
-        <button type="submit">Submit</button>
-    </form>
-
+        <form action="/results" method="POST">
+            <div class="searchbar-container">
+                <div class="filter-container">
+                    <label for="filter">Filter</label>
+                    <select name="filter" id="filter">
+                        <option value="all">all</option>
+                        <option value="prof">professors</option>
+                        <option value="building">buildings</option>
+                    </select>
+                </div>
+                <div class="filter-search-container">
+                    <label for="search">Search</label>
+                    <input name="search" id="search" type="text" placeholder="Professor, Building">
+                </div>
+                
+                <div class="submit">
+                    <button type="submit">Submit</button>
+                </div>
+            </div>
+            
+        </form>
+    </div>
 </body>
 </html>
 

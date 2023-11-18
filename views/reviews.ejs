@@ -1,40 +1,105 @@
-<h1>Reviews for <%= name %></h1> 
-<form action="/logout?_method=DELETE" method="POST">
-    <button type="submit">Log Out</button>
-</form>
-<form action="/" method="GET">
-    <button type="submit">Home</button>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zotratr.</title>
+    <link href="reviews.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div class="sidebar" id="sidebar">
+        <a href="#" class="Logo">
+            <img src="assets/short_logo.png" alt="Zotratr Logo">
+        </a> 
+        
+        <div class="rectangle"></div>
+        
+        <div class="menu-items">
+            <button class="Name">
+                <img src="assets/profile.png" alt="Name"/>
+                <span class="NameToolTip"> Profile </span>
+            </button>
+    
+            <button class="Search">
+                <img src="assets/search.png" alt="Search"/>
+                <span class="SearchToolTip"> Search </span>
+            </button> 
+    
+            <button class="Links">
+                <img src="assets/links.png" alt="Links" />
+                <span class="LinksToolTip"> Links </span>
+            </button> 
+    
+            <button class="Feedback">
+                <img src="assets/feedback.png" alt="Feedback" border="0" />
+                <span class="FeedbackToolTip">Feedback</span>
+            </button>
+    
+            <button class="Settings">
+                <img src="assets/settings.png" alt="Settings" border="0" />
+                <span class="SettingsToolTip">Settings</span>
+            </button>
+            
+            <form action="/logout?_method=DELETE" method="POST">
+                <button class="Logout">
+                    <img src="assets/logout.png" alt="Logout" border="0" />
+                    <span class="LogoutToolTip">Logout</span>
+                </button> 
+            </form>
+           
+        </div>
+    </div>
 
-<button type="submit" onclick="toggleForm()">Create Review</button>
+    <div class="reviewspage-container">
+        <form action="/" method="GET">
+            <button type="submit">Home</button>
+        </form> 
+        <button type="submit" onclick="toggleForm()">Create Review</button> 
+    </div>
+    <div class="review-section">
+        <h1>Reviews</h1>
 
-<!-- have a js function that reads the created onclick function from each review to 
-like/dislike -->
-<div> <%- reviews %> </div>
+        <!-- have a js function that reads the created onclick function from each review to 
+        like/dislike -->
+        <div> <%- reviews %> </div>
 
-<!-- pop up review creation -->
+        <!-- pop up review creation -->
 
-<div class="review" id="review">
-    <button type="submit" onclick="toggleForm()">X</button>
-    <h2>Create Review for <%= name %></h2>
-    <form action="/createRev" method="POST">
-        <input type="hidden" name="name" value="<%= name %>">
-        <label for="title">Title</label>
-        <input type="text" name="title" required>
+        <div class="review" id="review">
+            <button type="submit" onclick="toggleForm()">X</button>
+            <h2>Create Review</h2>
+            <form action="/createRev" method="POST">
+                <div class="createreview-container">
+                    <input type="hidden" name="id" value="<%= id %>">
+                    <label for="title">Title</label>
+                    <input type="text" name="title" required>
+                    
+                    <div class="descriptionbox-container">
+                        <label for="title">Description</label>
+                        <textarea name="desc" required></textarea>
+                    </div>
+                    
+                    <div class="radio-container">
+                        <label for="rating">Rating:</label> 
+                        <input type="radio" name = "rating" value="1"> 1 </br>
+                        <input type="radio" name = "rating" value="2"> 2 </br>
+                        <input type="radio" name = "rating" value="3"> 3 </br>
+                        <input type="radio" name = "rating" value="4"> 4 </br>
+                        <input type="radio" name = "rating" value="5"> 5 </br>    
+                    </div>
+                    
+                    <div class="createreview-submit">
+                        <button type="submit" onclick="toggleForm()">Submit Review</button>
+                    </div>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+    
 
-        <label for="title">Description</label>
-        <textarea name="desc" required></textarea>
-
-        <label for="rating">Rating:</label> 
-        <input type="radio" name = "rating" value="1"> 1 </br>
-        <input type="radio" name = "rating" value="2"> 2 </br>
-        <input type="radio" name = "rating" value="3"> 3 </br>
-        <input type="radio" name = "rating" value="4"> 4 </br>
-        <input type="radio" name = "rating" value="5"> 5 </br>
-
-        <button type="submit" onclick="toggleForm()">Create Review</button>
-    </form>
-</div>
+</body>
+</html>
 
 
 

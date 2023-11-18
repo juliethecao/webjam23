@@ -1,3 +1,9 @@
+.result-box{
+    border-width: 3px;
+    border-color: black;
+    background-color: #fffdaf;
+}
+
 @font-face {
     font-family: 'Calibri';
     src: local('Calibri'), sans-serif;
@@ -42,7 +48,7 @@ body {
     padding: 20px;
 }
 
-.homepage-container {
+.resultspage-container {
     padding-left: 30px;
     padding-top: 30px;
 }
@@ -60,16 +66,57 @@ h1 {
     gap: 1vw;
 }
 
-.submit button {
-    display: grid;
+.reviewspage-container button,
+.createreview-submit button{
+    /* display: grid;
     align-items: center;
-    justify-content: center;
+    justify-content: center; */
     background-color: #62b6cb;
     color: white;
     border-radius: 8px;
     padding: 5px 8px 5px 8px;
     border-color: #62b6cb;
     font-size: 16px;
+}
+
+.reviewspage-container {
+    padding-top: 30px;
+    padding-left: 30px;
+}
+
+.createreview-container {
+    display: grid;
+    grid-template-columns: none;
+    background-color: #bee9e8;
+    animation: FadeIn 0.75s ease-in-out forwards;
+    border-radius: 10px;
+    padding: 10px 10px 10px 10px;
+    gap: 0.5vw;
+}
+
+@keyframes FadeIn {
+    from {
+        background-color: #fffdaf;
+    }
+    to {
+        background-color: #bee9e8;
+    }
+}
+
+.descriptionbox-container {
+    display: grid;
+    grid-template-columns: none;
+    gap: 0.5vw;
+}
+
+.descriptionbox-container textarea {
+    border: 2px solid #62b6cb;
+    border-radius: 8px;
+}
+
+.radio-container label {
+    display: grid;
+    grid-template-columns: none;
 }
 
 input,
